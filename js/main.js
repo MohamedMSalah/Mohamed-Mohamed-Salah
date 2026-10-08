@@ -104,8 +104,82 @@ function initCV() {
   });
 }
 
+const REVEAL_SELECTOR = [
+  ".hero-content",
+  ".hero-visual",
+  ".recruiter-bar",
+  ".section-header",
+  ".about-text",
+  ".about-feature-card",
+  ".metric-card",
+  ".timeline-item",
+  ".projects-filter-bar",
+  ".project-card",
+  ".arch-node",
+  ".arch-cross-pill",
+  ".skill-category-card",
+  ".education-card",
+  ".resume-card",
+  ".contact-card-item",
+  ".contact-form"
+].join(", ");
+
+function initScrollReveal() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const seen = new WeakSet();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.16,
+    rootMargin: "0px 0px -8% 0px"
+  });
+
+  function arm(element) {
+    if (!(element instanceof Element) || seen.has(element) || !element.matches(REVEAL_SELECTOR)) return;
+    seen.add(element);
+
+    const siblings = element.parentElement
+      ? [...element.parentElement.children].filter((child) => child.matches(REVEAL_SELECTOR))
+      : [];
+    const index = Math.max(0, siblings.indexOf(element));
+    element.style.setProperty("--reveal-delay", `${Math.min(index, 8) * 80}ms`);
+    element.classList.add("reveal");
+
+    if (reduceMotion) {
+      element.classList.add("is-visible");
+      return;
+    }
+
+    observer.observe(element);
+  }
+
+  function scan(root) {
+    if (!(root instanceof Element || root instanceof Document)) return;
+    if (root instanceof Element) arm(root);
+    root.querySelectorAll(REVEAL_SELECTOR).forEach(arm);
+  }
+
+  scan(document);
+
+  const mutationObserver = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node instanceof Element) scan(node);
+      });
+    });
+  });
+
+  mutationObserver.observe(document.body, { childList: true, subtree: true });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initNavigation();
   initCV();
+  initScrollReveal();
 });

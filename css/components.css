@@ -728,15 +728,53 @@
 }
 
 .project-banner {
-  height: 200px;
+  height: 210px;
   background: var(--bg-subtle);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-6);
   overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-cover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.project-cover.is-loaded {
+  opacity: 1;
+}
+
+.project-banner:has(.project-cover:not(.is-loaded))::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.08) 50%, transparent 80%);
+  background-size: 200% 100%;
+  animation: lazyShimmer 1.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes lazyShimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+.project-modal-cover {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
 }
 
 .project-banner-decor {
@@ -763,6 +801,11 @@
   z-index: 2;
 }
 
+.project-status-tag .badge {
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+}
+
 .project-body {
   padding: var(--space-6);
   display: flex;
@@ -782,6 +825,7 @@
   font-size: 1.375rem;
   font-weight: 700;
   color: var(--text-primary);
+  margin-top: var(--space-2);
 }
 
 .project-company-badge {

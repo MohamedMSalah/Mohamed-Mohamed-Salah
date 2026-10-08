@@ -6,6 +6,7 @@
 const projectsData = [
   {
     id: "cms",
+    image: "assets/projects/cms.webp",
     title: "Clinic Management System (CMS)",
     category: "fullstack",
     company: "DivenAI",
@@ -34,11 +35,12 @@ const projectsData = [
       database: "Microsoft SQL Server with 15+ normalized relational tables and EF Core Migrations",
       security: "OAuth 2.0 / JWT Authentication with strict Role-Based Access Control (Admin, Doctor, Patient)"
     },
-    github: "https://github.com/",
+    github: "https://github.com/MohamedMSalah",
     live: null
   },
   {
     id: "alarmus",
+    image: "assets/projects/alarmus.webp",
     title: "Alarmus — Collaborative Alarms",
     category: "mobile",
     company: "Lev AI / DivenAI",
@@ -66,11 +68,12 @@ const projectsData = [
       notifications: "Firebase Cloud Messaging (FCM) & local scheduled notifications with high-priority channels",
       apiDoc: "OpenAPI / Swagger documentation for seamless API contract testing"
     },
-    github: "https://github.com/",
+    github: "https://github.com/MohamedMSalah",
     live: null
   },
   {
     id: "manetho",
+    image: "assets/projects/manetho.webp",
     title: "Manetho — Hieroglyphic Translation",
     category: "ai",
     company: "Research / Innovation",
@@ -97,11 +100,12 @@ const projectsData = [
       aiPipeline: "Custom Computer Vision detector paired with NLP translation model deployed via RESTful microservices",
       integration: "Asynchronous HTTP/Dio streaming client handling image payloads and structured JSON response decoding"
     },
-    github: "https://github.com/",
-    live: null
+    github: "https://github.com/MohamedMSalah/Manetho-ui",
+    live: "https://drive.google.com/file/d/1N49T9pdcN28onWsco0vkZUEUgJy_c_99/view?usp=drivesdk"
   },
   {
     id: "yalla-5roga",
+    image: "assets/projects/yalla-5roga.jpg",
     title: "Yalla 5roga — Social Outing Planner",
     category: "fullstack",
     company: "Personal Project",
@@ -130,10 +134,45 @@ const projectsData = [
       database: "PostgreSQL database with indexed spatial & relational schema",
       caching: "In-memory & client-side caching reducing repeated map/place fetch requests"
     },
-    github: "https://github.com/",
-    live: null
+    github: "https://github.com/MohamedMSalah/yalla_5roga",
+    live: "https://drive.google.com/file/d/1RBuxJnvMZsKD3-FhFyFitmuu8n0cKO07/view?usp=drivesdk"
   }
 ];
+
+const projectOrder = ["yalla-5roga", "cms", "alarmus", "manetho"];
+projectsData.sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
+
+const LAZY_PLACEHOLDER = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
+const lazyImageObserver = "IntersectionObserver" in window
+  ? new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        loadLazyPicture(entry.target);
+        lazyImageObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "240px 0px", threshold: 0.01 })
+  : null;
+
+function loadLazyPicture(img) {
+  const src = img.dataset.src;
+  if (!src || img.dataset.loaded === "true") return;
+  img.dataset.loaded = "true";
+  img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
+  img.addEventListener("error", () => img.classList.add("is-loaded"), { once: true });
+  img.src = src;
+  if (img.complete && img.naturalWidth > 0) img.classList.add("is-loaded");
+}
+
+function observeLazyPictures(root) {
+  root.querySelectorAll("img.project-cover[data-src]").forEach((img) => {
+    if (!lazyImageObserver) {
+      loadLazyPicture(img);
+      return;
+    }
+    lazyImageObserver.observe(img);
+  });
+}
 
 // Initialize Projects Rendering & Filtering
 function initProjects() {
@@ -164,21 +203,18 @@ function initProjects() {
         <span class="tech-tag">${t}</span>
       `).join("");
 
+      const coverHtml = project.image
+        ? `<img class="project-cover" src="${LAZY_PLACEHOLDER}" data-src="${project.image}" alt="${project.title} preview" width="1200" height="750" decoding="async">`
+        : `<div class="project-banner-decor"></div>`;
+
       card.innerHTML = `
         <div class="project-banner">
-          <div class="project-banner-decor"></div>
-          <div class="project-status-tag">
-            <span class="badge badge-${project.badgeType}">${project.badge}</span>
-          </div>
-          <div class="project-mockup-graphic">
-            <div style="font-size: 2.5rem; opacity: 0.85;">
-              ${project.id === 'cms' ? '🏥' : project.id === 'alarmus' ? '⏰' : project.id === 'manetho' ? '🏛️' : '📍'}
-            </div>
-          </div>
+          ${coverHtml}
         </div>
         <div class="project-body">
           <div class="project-header-meta">
             <div>
+              <span class="badge badge-${project.badgeType}">${project.badge}</span>
               <h3 class="project-title">${project.title}</h3>
               <span class="project-company-badge">${project.company} • ${project.duration}</span>
             </div>
@@ -197,7 +233,7 @@ function initProjects() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
             <div style="display: flex; gap: 0.5rem;">
-              <a href="https://github.com/m0hamed724" target="_blank" rel="noopener noreferrer" class="btn btn-icon btn-sm" title="View GitHub Profile">
+              <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-icon btn-sm" title="View on GitHub">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               </a>
             </div>
@@ -207,6 +243,8 @@ function initProjects() {
       
       container.appendChild(card);
     });
+
+    observeLazyPictures(container);
 
     // Reattach modal click handlers
     document.querySelectorAll(".view-details-btn").forEach(btn => {
@@ -255,7 +293,12 @@ function openProjectModal(projectId) {
     <span class="tech-tag">${t}</span>
   `).join("");
 
+  const coverHtml = project.image
+    ? `<img class="project-modal-cover" src="${project.image}" alt="${project.title} preview" width="1200" height="750" decoding="async">`
+    : "";
+
   modalBody.innerHTML = `
+    ${coverHtml}
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
       <span class="badge badge-${project.badgeType}">${project.badge}</span>
       <span style="font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-muted);">${project.company} | ${project.duration}</span>
@@ -311,9 +354,10 @@ function openProjectModal(projectId) {
     </div>
 
     <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
-      <a href="https://github.com/m0hamed724" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+      ${project.live ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm"><span>Watch Demo</span></a>` : ""}
+      <a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        <span>GitHub Profile</span>
+        <span>View Code</span>
       </a>
       <button class="btn btn-primary btn-sm modal-close-action">Close Details</button>
     </div>

@@ -107,7 +107,7 @@ def create_pdf(output_path):
     story.append(Paragraph("Software Engineer | Mobile Full Stack Developer", subtitle_style))
     story.append(Spacer(1, 4))
     
-    contact_text = 'Giza, Egypt &nbsp;|&nbsp; <a href="mailto:m0hamed724@outlook.com"><u>m0hamed724@outlook.com</u></a> &nbsp;|&nbsp; +201552257207 &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/mohamed-mohamed-salah-b4abb11b9"><u>LinkedIn</u></a> &nbsp;|&nbsp; <a href="https://github.com/MohamedMSalah"><u>GitHub</u></a>'
+    contact_text = 'Giza, Egypt &nbsp;|&nbsp; <a href="mailto:m0hamed724@outlook.com"><u>m0hamed724@outlook.com</u></a> &nbsp;|&nbsp; +201552257207 &nbsp;|&nbsp; <a href="https://www.linkedin.com/in/mohamed-mohamed-salah"><u>LinkedIn</u></a> &nbsp;|&nbsp; <a href="https://github.com/MohamedMSalah"><u>GitHub</u></a>'
     story.append(Paragraph(contact_text, contact_style))
     story.append(Spacer(1, 6))
 
@@ -142,8 +142,8 @@ def create_pdf(output_path):
     add_section_header("Experience")
     exp_table = Table([
         [
-            Paragraph("<b>Full Stack Developer | (.NET & Flutter)</b>, DivenAI / Lev AI", body_bold),
-            Paragraph("07/2024 – 07/2025", body_meta)
+            Paragraph("<b>Full Stack Mobile Developer</b>, Lev AI (formerly Diven-AI)", body_bold),
+            Paragraph("07/2026 – Present", body_meta)
         ]
     ], colWidths=[380, 160])
     exp_table.setStyle(TableStyle([
@@ -154,6 +154,25 @@ def create_pdf(output_path):
         ('RIGHTPADDING', (0,0), (-1,-1), 0)
     ]))
     story.append(exp_table)
+    story.append(Paragraph("• Developed cross-platform mobile applications with Flutter and Dart, and expanded into React Native, Node.js, and PostgreSQL projects.", bullet_style))
+    story.append(Paragraph("• Built RESTful APIs, worked with SQL and PostgreSQL, integrated Firebase, and applied Clean Architecture, Provider, Repository Pattern, and SOLID principles while supporting interns and junior developers.", bullet_style))
+
+    story.append(Spacer(1, 4))
+    exp_table_2 = Table([
+        [
+            Paragraph("<b>Full-Stack Mobile Developer</b>, Diven-AI", body_bold),
+            Paragraph("07/2024 – 07/2025", body_meta)
+        ]
+    ], colWidths=[380, 160])
+    exp_table_2.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0)
+    ]))
+    story.append(exp_table_2)
+    story.append(Paragraph("• Built full-stack mobile products with Flutter, developed .NET backend APIs, and integrated databases for reliable end-to-end application experiences.", bullet_style))
     story.append(Paragraph("• Architected and deployed cross-platform iOS & Android healthcare applications using Flutter, Dart, and BLoC/Riverpod, cutting multi-platform development time by 40% while maintaining a 99.8% crash-free session rate and consistent 60 FPS UI performance.", bullet_style))
     story.append(Paragraph("• Engineered high-performance backend services using ASP.NET Core (C#) and designed a normalized SQL Server database with 15+ related tables (Patients, Appointments, EHR), optimizing EF Core queries to reduce average API response latency by 35%.", bullet_style))
     story.append(Paragraph("• Implemented enterprise-grade security via OAuth 2.0, JWT, and fine-grained Role-Based Access Control (RBAC) across 3 user tiers (Patients, Doctors, Admins), securing 100% of sensitive medical records and clinical endpoints against unauthorized access.", bullet_style))
