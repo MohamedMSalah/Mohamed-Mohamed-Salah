@@ -274,9 +274,7 @@ html.motion-ready .btn:active {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: var(--space-12);
-  align-items: center;
+  grid-template-columns: 1fr;
   position: relative;
   z-index: 1;
 }
@@ -347,102 +345,6 @@ html.motion-ready .btn:active {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
-}
-
-/* Hero Visual / Code Card */
-.hero-visual {
-  position: relative;
-}
-
-.code-window {
-  background: var(--bg-code);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
-  position: relative;
-}
-
-.code-window-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-3) var(--space-5);
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.window-dots {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.window-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.dot-red { background: #ef4444; }
-.dot-yellow { background: #f59e0b; }
-.dot-green { background: #10b981; }
-
-.window-title {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-}
-
-.code-content {
-  padding: var(--space-6);
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.7;
-  overflow-x: auto;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-.code-keyword { color: #f43f5e; font-weight: 600; }
-.code-type { color: #38bdf8; }
-.code-string { color: #a7f3d0; }
-.code-func { color: #818cf8; }
-.code-comment { color: #64748b; font-style: italic; }
-.code-prop { color: #fbbf24; }
-
-.floating-pill {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3) var(--space-4);
-  background: var(--bg-card-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  font-size: 0.875rem;
-  font-weight: 600;
-  z-index: 2;
-  animation: floatSlow 6s ease-in-out infinite alternate;
-}
-
-.floating-pill-1 {
-  top: -20px;
-  right: -15px;
-}
-
-.floating-pill-2 {
-  bottom: -20px;
-  left: -15px;
-  animation-delay: -3s;
-}
-
-@keyframes floatSlow {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-10px); }
 }
 
 /* ==========================================================================

@@ -105,10 +105,6 @@
   .skills-container {
     grid-template-columns: 1fr;
   }
-
-  .floating-pill {
-    display: none;
-  }
 }
 
 /* Small Mobile (Max 480px) */

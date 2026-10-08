@@ -2,7 +2,6 @@ import { animate, hover, inView, press, stagger } from "https://cdn.jsdelivr.net
 
 const REVEAL_SELECTOR = [
   ".hero-content",
-  ".hero-visual",
   ".section-header",
   ".about-text",
   ".about-feature-card",

@@ -116,7 +116,6 @@ function initPortrait() {
 
 const REVEAL_SELECTOR = [
   ".hero-content",
-  ".hero-visual",
   ".section-header",
   ".about-text",
   ".about-feature-card",
