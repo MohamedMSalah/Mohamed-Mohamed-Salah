@@ -88,26 +88,35 @@ function initNavigation() {
   updateScrollSpy();
 }
 
-// CV Download / Print Viewer
-function initCV() {
-  const cvButtons = document.querySelectorAll(".download-cv-btn");
-  
-  cvButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      // If a dedicated PDF exists, it links directly; otherwise we provide quick print dialog or fallback
-      const href = btn.getAttribute("href");
-      if (!href || href === "#" || href === "#resume") {
-        e.preventDefault();
-        window.print();
-      }
-    });
+function initPortrait() {
+  const modal = document.getElementById("portraitModal");
+  const openButtons = document.querySelectorAll("#openPortraitBtn, #openPortraitBtnDrawer");
+  const closeButton = document.getElementById("closePortraitBtn");
+  if (!modal) return;
+
+  function openPortrait() {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closePortrait() {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  openButtons.forEach((button) => button.addEventListener("click", openPortrait));
+  closeButton?.addEventListener("click", closePortrait);
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closePortrait();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal.classList.contains("active")) closePortrait();
   });
 }
 
 const REVEAL_SELECTOR = [
   ".hero-content",
   ".hero-visual",
-  ".recruiter-bar",
   ".section-header",
   ".about-text",
   ".about-feature-card",
@@ -119,7 +128,6 @@ const REVEAL_SELECTOR = [
   ".arch-cross-pill",
   ".skill-category-card",
   ".education-card",
-  ".resume-card",
   ".contact-card-item",
   ".contact-form"
 ].join(", ");
@@ -180,6 +188,6 @@ function initScrollReveal() {
 document.addEventListener("DOMContentLoaded", () => {
   initTheme();
   initNavigation();
-  initCV();
+  initPortrait();
   initScrollReveal();
 });

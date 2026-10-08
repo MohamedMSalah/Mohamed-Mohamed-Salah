@@ -36,6 +36,11 @@
   letter-spacing: -0.02em;
   color: var(--text-primary);
   text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-name {
+  white-space: nowrap;
 }
 
 .brand-monogram {
@@ -51,6 +56,57 @@
   font-size: 0.9375rem;
   font-weight: 700;
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+}
+
+.brand-portrait-btn {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+  cursor: pointer;
+}
+
+.brand-portrait-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.45);
+}
+
+.brand-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  display: block;
+}
+
+.portrait-modal-card {
+  max-width: 420px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.portrait-modal-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.portrait-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #ffffff;
 }
 
 .nav-desktop {

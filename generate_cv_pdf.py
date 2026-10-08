@@ -240,4 +240,4 @@ def create_pdf(output_path):
 
 if __name__ == "__main__":
     os.makedirs("assets", exist_ok=True)
-    create_pdf("assets/Mohamed_Mohamed_Salah_CV.pdf")
+    create_pdf("assets/Software Engineer - FullStack Mobile app developer2026.pdf")
