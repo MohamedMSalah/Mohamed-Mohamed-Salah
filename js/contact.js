@@ -89,18 +89,19 @@ function initContact() {
         return;
       }
 
-      // Open mailto fallback pre-filled
       const subject = encodeURIComponent(`Portfolio Inquiry from ${nameInput.value.trim()}`);
       const body = encodeURIComponent(`Hi Mohamed,\n\n${messageInput.value.trim()}\n\nBest regards,\n${nameInput.value.trim()} (${emailInput.value.trim()})`);
-      
       const mailtoUrl = `mailto:m0hamed724@outlook.com?subject=${subject}&body=${body}`;
-      
+
+      const mailLink = document.createElement("a");
+      mailLink.href = mailtoUrl;
+      mailLink.rel = "nofollow";
+      document.body.appendChild(mailLink);
+      mailLink.click();
+      mailLink.remove();
+
       showToast("Thank you! Opening your email client...", "success");
-      
-      setTimeout(() => {
-        window.location.href = mailtoUrl;
-        form.reset();
-      }, 800);
+      form.reset();
     });
   }
 }
