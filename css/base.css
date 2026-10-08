@@ -201,6 +201,12 @@ code, kbd, samp, pre {
   transform: none;
 }
 
+html.motion-ready .reveal:not(.is-visible) {
+  opacity: 0;
+  transform: none;
+  transition: none;
+}
+
 /* Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

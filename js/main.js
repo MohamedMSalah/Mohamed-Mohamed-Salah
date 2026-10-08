@@ -133,6 +133,8 @@ const REVEAL_SELECTOR = [
 ].join(", ");
 
 function initScrollReveal() {
+  if (document.documentElement.dataset.reveal === "motion") return;
+
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const seen = new WeakSet();
 

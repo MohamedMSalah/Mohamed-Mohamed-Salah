@@ -27,6 +27,7 @@ const skillsData = [
       { name: "C#", highlight: true },
       { name: "Node.js", highlight: true },
       { name: "RESTful APIs", highlight: true },
+      { name: "Swagger", highlight: true },
       { name: "GraphQL", highlight: false },
       { name: "Microservices", highlight: false },
       { name: "Clean Architecture", highlight: true }

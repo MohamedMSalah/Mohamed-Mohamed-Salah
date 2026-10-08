@@ -14,7 +14,7 @@ const projectsData = [
     badge: "Production / Enterprise",
     badgeType: "primary",
     summary: "An end-to-end healthcare platform connecting Patients, Doctors, and Administrators with full appointment scheduling, diagnosis tracking, and medical record management.",
-    technologies: ["Flutter", ".NET", "C#", "SQL Server", "REST APIs", "Postman", "Entity Framework Core", "JWT / RBAC"],
+    technologies: ["Flutter", ".NET", "C#", "SQL Server", "REST APIs", "Swagger", "Entity Framework Core", "JWT / RBAC"],
     metrics: [
       { label: "Database Schema", value: "15+ Tables" },
       { label: "REST Endpoints", value: "10+ Endpoints" },
