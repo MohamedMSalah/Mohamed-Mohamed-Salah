@@ -142,7 +142,7 @@ def create_pdf(output_path):
     add_section_header("Experience")
     exp_table = Table([
         [
-            Paragraph("<b>Full Stack Mobile Developer</b>, Lev AI (formerly Diven-AI)", body_bold),
+            Paragraph("<b>Full Stack Mobile Developer</b>, Lev AI (formerly Diven-AI) — Part-time", body_bold),
             Paragraph("07/2026 – Present", body_meta)
         ]
     ], colWidths=[380, 160])
@@ -156,6 +156,23 @@ def create_pdf(output_path):
     story.append(exp_table)
     story.append(Paragraph("• Developed cross-platform mobile applications with Flutter and Dart, and expanded into React Native, Node.js, and PostgreSQL projects.", bullet_style))
     story.append(Paragraph("• Built RESTful APIs, worked with SQL and PostgreSQL, integrated Firebase, and applied Clean Architecture, Provider, Repository Pattern, and SOLID principles while supporting interns and junior developers.", bullet_style))
+
+    story.append(Spacer(1, 4))
+    exp_table_service = Table([
+        [
+            Paragraph("<b>Military Service</b>", body_bold),
+            Paragraph("07/2025 – 09/2026", body_meta)
+        ]
+    ], colWidths=[380, 160])
+    exp_table_service.setStyle(TableStyle([
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 0),
+        ('TOPPADDING', (0,0), (-1,-1), 0),
+        ('LEFTPADDING', (0,0), (-1,-1), 0),
+        ('RIGHTPADDING', (0,0), (-1,-1), 0)
+    ]))
+    story.append(exp_table_service)
+    story.append(Paragraph("• Completed military service.", bullet_style))
 
     story.append(Spacer(1, 4))
     exp_table_2 = Table([
