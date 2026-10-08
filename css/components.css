@@ -88,6 +88,11 @@
   height: 20px;
 }
 
+html.motion-ready .btn:hover,
+html.motion-ready .btn:active {
+  transform: none;
+}
+
 /* ==========================================================================
    Badges & Tags
    ========================================================================== */
@@ -1421,6 +1426,11 @@ html.motion-ready .modal-overlay.active .modal-card {
   flex-direction: column;
   gap: var(--space-3);
   z-index: 2000;
+}
+
+html.motion-ready .toast {
+  animation: none;
+  opacity: 0;
 }
 
 .toast {

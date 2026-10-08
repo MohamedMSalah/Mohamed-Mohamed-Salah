@@ -25,6 +25,10 @@ function showToast(message, type = "success") {
   toastContainer.appendChild(toast);
 
   setTimeout(() => {
+    if (typeof window.motionDismissToast === "function") {
+      window.motionDismissToast(toast);
+      return;
+    }
     toast.style.opacity = "0";
     toast.style.transform = "translateX(100%)";
     toast.style.transition = "all 0.3s ease";
