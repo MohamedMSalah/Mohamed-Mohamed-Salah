@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BkSabwWG.js";var t=e(),n=({error:e})=>(0,t.jsx)(`div`,{role:`alert`,className:`p-8 text-sm text-muted-foreground`,children:e instanceof Error?e.message:`Something went wrong`});export{n as errorComponent};
