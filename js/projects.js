@@ -135,7 +135,7 @@ const projectsData = [
       realtime: "Socket.IO bidirectional event handling for live chat and voting updates, paired with Firebase Cloud Messaging (FCM)"
     },
     github: "https://github.com/MohamedMSalah/yalla5roga",
-    live: "https://drive.google.com/file/d/1RBuxJnvMZsKD3-FhFyFitmuu8n0cKO07/view?usp=drivesdk"
+    live: null
   }
 ];
 
