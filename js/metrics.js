@@ -7,14 +7,38 @@ function initMetrics() {
   const counterElements = document.querySelectorAll(".animate-counter");
   if (!counterElements.length) return;
 
+  const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!("IntersectionObserver" in window)) {
+    counterElements.forEach(el => {
+      const targetValue = parseFloat(el.getAttribute("data-target"));
+      const prefix = el.getAttribute("data-prefix") || "";
+      const suffix = el.getAttribute("data-suffix") || "";
+      const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+      if (!isNaN(targetValue)) {
+        el.textContent = `${prefix}${targetValue.toFixed(decimals)}${suffix}`;
+      }
+    });
+    return;
+  }
+
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
         const targetValue = parseFloat(el.getAttribute("data-target"));
+        if (isNaN(targetValue)) return;
+
         const prefix = el.getAttribute("data-prefix") || "";
         const suffix = el.getAttribute("data-suffix") || "";
         const decimals = parseInt(el.getAttribute("data-decimals") || "0", 10);
+
+        if (reduceMotion) {
+          el.textContent = `${prefix}${targetValue.toFixed(decimals)}${suffix}`;
+          obs.unobserve(el);
+          return;
+        }
+
         const duration = 1600; // ms
         const startTime = performance.now();
 
@@ -38,9 +62,13 @@ function initMetrics() {
         obs.unobserve(el);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
 
   counterElements.forEach(el => observer.observe(el));
 }
 
-document.addEventListener("DOMContentLoaded", initMetrics);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMetrics);
+} else {
+  initMetrics();
+}

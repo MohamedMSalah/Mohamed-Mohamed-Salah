@@ -5,84 +5,84 @@
 
 const skillsData = [
   {
-    category: "Mobile & Frontend",
+    category: "Mobile Development",
     icon: "smartphone",
-    description: "Core strength in cross-platform mobile apps with pixel-perfect UI and scalable state management.",
+    description: "Cross-platform mobile apps with responsive UI and robust state management.",
     skills: [
       { name: "Flutter", highlight: true },
       { name: "Dart", highlight: true },
+      { name: "Provider", highlight: true },
       { name: "BLoC", highlight: true },
       { name: "Riverpod", highlight: true },
-      { name: "Provider", highlight: false },
-      { name: "React Native", highlight: false },
-      { name: "Responsive UI Design", highlight: false }
+      { name: "Responsive UI", highlight: false }
     ]
   },
   {
     category: "Backend & APIs",
     icon: "server",
-    description: "High-performance microservices, RESTful APIs, and robust business logic layers.",
+    description: "Robust backend services, real-time communication, and RESTful APIs.",
     skills: [
+      { name: "Node.js", highlight: true },
+      { name: "Express", highlight: true },
+      { name: "TypeScript", highlight: true },
       { name: "ASP.NET Core", highlight: true },
       { name: "C#", highlight: true },
-      { name: "Node.js", highlight: true },
-      { name: "RESTful APIs", highlight: true },
-      { name: "Swagger", highlight: true },
-      { name: "GraphQL", highlight: false },
-      { name: "Microservices", highlight: false },
-      { name: "Clean Architecture", highlight: true }
+      { name: "REST APIs", highlight: true },
+      { name: "Socket.IO", highlight: true },
+      { name: "Clean Architecture", highlight: true },
+      { name: "Swagger / OpenAPI", highlight: false }
     ]
   },
   {
-    category: "Databases & Storage",
+    category: "Databases & ORM",
     icon: "database",
-    description: "Normalized relational modeling, query tuning, migrations, and cloud storage.",
+    description: "Relational database modeling, schema migrations, and cloud databases.",
     skills: [
-      { name: "SQL Server", highlight: true },
       { name: "PostgreSQL", highlight: true },
+      { name: "SQL Server", highlight: true },
+      { name: "Prisma", highlight: true },
       { name: "Entity Framework Core", highlight: true },
-      { name: "SQLite", highlight: false },
-      { name: "Firebase", highlight: false },
-      { name: "SQL", highlight: true }
+      { name: "Firebase", highlight: true },
+      { name: "SQL", highlight: false }
     ]
   },
   {
     category: "Programming Languages",
     icon: "code",
-    description: "Multi-paradigm language proficiency from systems to modern high-level languages.",
+    description: "Core proficiency across modern typed, object-oriented, and query languages.",
     skills: [
       { name: "Dart", highlight: true },
-      { name: "C#", highlight: true },
-      { name: "JavaScript", highlight: false },
       { name: "TypeScript", highlight: true },
-      { name: "C++", highlight: false },
-      { name: "Java", highlight: false },
-      { name: "SQL", highlight: false }
+      { name: "JavaScript", highlight: true },
+      { name: "C#", highlight: true },
+      { name: "SQL", highlight: true },
+      { name: "C++", highlight: false }
     ]
   },
   {
-    category: "Security & Authentication",
+    category: "Security & Real-Time",
     icon: "shield",
-    description: "Enterprise-grade identity protocols, cryptographic token handling, and role permissions.",
+    description: "Authentication standards, role-based authorization, and real-time event systems.",
     skills: [
-      { name: "OAuth 2.0", highlight: true },
+      { name: "Socket.IO", highlight: true },
+      { name: "Firebase Cloud Messaging", highlight: true },
       { name: "JWT", highlight: true },
+      { name: "OAuth 2.0", highlight: true },
       { name: "RBAC (Role-Based Access)", highlight: true },
-      { name: "Identity Server", highlight: false },
       { name: "Secure Storage", highlight: false }
     ]
   },
   {
-    category: "DevOps & Cloud",
+    category: "Tools & Practices",
     icon: "cloud",
-    description: "Continuous integration, containerization, automated testing, and cloud infrastructure.",
+    description: "Version control, API testing, spatial mapping, and software architecture.",
     skills: [
-      { name: "Azure", highlight: false },
-      { name: "Docker", highlight: true },
-      { name: "CI/CD Pipelines", highlight: true },
-      { name: "GitHub Actions", highlight: true },
       { name: "Git", highlight: true },
-      { name: "Flutter Test & Mockito", highlight: true }
+      { name: "GitHub", highlight: true },
+      { name: "Postman", highlight: true },
+      { name: "MapLibre GL", highlight: true },
+      { name: "SOLID Principles", highlight: true },
+      { name: "Flutter Test & Mockito", highlight: false }
     ]
   }
 ];
@@ -136,4 +136,8 @@ function initSkills() {
   }).join("");
 }
 
-document.addEventListener("DOMContentLoaded", initSkills);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initSkills);
+} else {
+  initSkills();
+}

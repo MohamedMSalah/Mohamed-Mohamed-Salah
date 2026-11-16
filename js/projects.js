@@ -100,7 +100,7 @@ const projectsData = [
     ],
     architectureDetails: {
       frontend: "Flutter camera capture interface with real-time bounding box overlays and translation history",
-      aiPipeline: "Custom Computer Vision detector paired with NLP translation model deployed via RESTful microservices",
+      aiPipeline: "Custom Computer Vision detector paired with NLP translation model deployed via RESTful backend services",
       integration: "Asynchronous HTTP/Dio streaming client handling image payloads and structured JSON response decoding"
     },
     github: "https://github.com/MohamedMSalah/Manetho-ui",
@@ -108,36 +108,37 @@ const projectsData = [
   },
   {
     id: "yalla-5roga",
-    image: "assets/projects/yalla-5roga.jpg",
+    image: "assets/projects/yalla_5roga_mock.webp",
     title: "Yalla 5roga — Social Outing Planner",
     category: "fullstack",
-    company: "Personal Project",
+    company: "Independent Project",
     duration: "Ongoing",
     badge: "Currently in Development",
     badgeType: "warning",
-    summary: "A modern social platform solving group planning friction by replacing messy chat messages with structured outing creation, proximity-based place voting, and automated RSVP tracking.",
-    technologies: ["Flutter", "Node.js", "TypeScript", "PostgreSQL", "Firebase", "Google Maps API", "REST APIs"],
+    summary: "An end-to-end social outing platform independently developed to make group plans effortless. Replaces chaotic chat threads with structured group management, outing planning, multi-place voting, real-time chat, shareable invitations, and interactive maps.",
+    technologies: ["Flutter", "Dart", "Node.js", "TypeScript", "Express", "Prisma", "PostgreSQL", "Firebase", "Socket.IO", "MapLibre GL", "REST APIs"],
     metrics: [
-      { label: "Development Status", value: "In Progress" },
-      { label: "Backend Stack", value: "Node.js & TS" },
-      { label: "Database", value: "PostgreSQL" },
-      { label: "Location Services", value: "Google Maps" }
+      { label: "Role", value: "Solo Developer" },
+      { label: "Mobile Stack", value: "Flutter & Dart" },
+      { label: "Backend Stack", value: "Node & Express" },
+      { label: "Real-time & Maps", value: "Socket.IO & MapLibre" }
     ],
     highlights: [
-      "Replacing tedious back-and-forth chat planning with dedicated outing hubs, interactive voting, and RSVP states (Going / Not Going / Maybe).",
-      "Integrated place suggestion engine recommending venues based on vibe, budget, and geographic proximity.",
-      "Integrated Google Maps SDK for direct routing, location discovery, and distance calculations.",
-      "Designed PostgreSQL relational database schema optimized for group relations, voting records, and outing history.",
-      "Implemented intelligent client-side and API caching layers to minimize unnecessary network traffic and third-party API costs.",
-      "Embedded real-time outing chat, invite links, and push notification triggers."
+      "Independently designed and developed the entire application from mobile client UI to backend APIs and database schemas.",
+      "Engineered comprehensive group management and outing planning modules, enabling friends to create outings, organize schedules, and track RSVPs.",
+      "Implemented interactive multi-place voting workflows to propose venues and democratically decide outing destinations.",
+      "Integrated interactive maps using MapLibre GL for venue discovery, location visualization, and outing navigation.",
+      "Developed low-latency real-time group chat powered by Socket.IO for seamless messaging within outings.",
+      "Created invitation link sharing and integrated Firebase Cloud Messaging for timely push notifications and easy onboarding.",
+      "Architected a scalable backend using Node.js, TypeScript, Express, and Prisma ORM backed by PostgreSQL."
     ],
     architectureDetails: {
-      frontend: "Flutter (Dart) with clean modular UI, MapView widgets, and real-time state listeners",
-      backend: "Node.js with TypeScript and Express/Fastify REST endpoints",
-      database: "PostgreSQL database with indexed spatial & relational schema",
-      caching: "In-memory & client-side caching reducing repeated map/place fetch requests"
+      frontend: "Flutter (Dart) mobile app with clean modular UI, Provider state management, and MapLibre GL map integration",
+      backend: "Node.js & TypeScript with Express REST endpoints, Prisma ORM, and Socket.IO for real-time WebSocket communication",
+      database: "PostgreSQL relational database with Prisma schema migrations and relational modeling",
+      realtime: "Socket.IO bidirectional event handling for live chat and voting updates, paired with Firebase Cloud Messaging (FCM)"
     },
-    github: "https://github.com/MohamedMSalah/yalla_5roga",
+    github: "https://github.com/MohamedMSalah/yalla5roga",
     live: "https://drive.google.com/file/d/1RBuxJnvMZsKD3-FhFyFitmuu8n0cKO07/view?usp=drivesdk"
   }
 ];
@@ -149,12 +150,12 @@ const LAZY_PLACEHOLDER = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEA
 
 const lazyImageObserver = "IntersectionObserver" in window
   ? new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        loadLazyPicture(entry.target);
-        lazyImageObserver.unobserve(entry.target);
-      });
-    }, { rootMargin: "240px 0px", threshold: 0.01 })
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      loadLazyPicture(entry.target);
+      lazyImageObserver.unobserve(entry.target);
+    });
+  }, { rootMargin: "240px 0px", threshold: 0.01 })
   : null;
 
 function loadLazyPicture(img) {
@@ -181,20 +182,20 @@ function observeLazyPictures(root) {
 function initProjects() {
   const container = document.getElementById("projectsGrid");
   const filterButtons = document.querySelectorAll(".filter-btn");
-  
+
   if (!container) return;
 
   function renderProjects(filter = "all") {
     container.innerHTML = "";
-    
-    const filtered = filter === "all" 
-      ? projectsData 
+
+    const filtered = filter === "all"
+      ? projectsData
       : projectsData.filter(p => p.category === filter || (filter === "mobile" && (p.category === "mobile" || p.technologies.includes("Flutter"))));
 
     filtered.forEach(project => {
       const card = document.createElement("div");
       card.className = "project-card";
-      
+
       const metricsHtml = project.metrics.map(m => `
         <div class="project-metric-item">
           <span class="project-metric-val">${m.value}</span>
@@ -246,7 +247,7 @@ function initProjects() {
           </div>
         </div>
       `;
-      
+
       container.appendChild(card);
     });
 
@@ -348,6 +349,16 @@ function openProjectModal(projectId) {
         <div style="background: var(--bg-main); padding: 0.875rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
           <strong style="color: var(--text-primary); font-size: 0.8125rem; display: block; margin-bottom: 0.25rem;">AI Models</strong>
           <span style="font-size: 0.8125rem; color: var(--text-secondary);">${project.architectureDetails.aiPipeline}</span>
+        </div>` : ''}
+        ${project.architectureDetails.realtime ? `
+        <div style="background: var(--bg-main); padding: 0.875rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <strong style="color: var(--text-primary); font-size: 0.8125rem; display: block; margin-bottom: 0.25rem;">Real-time & Maps</strong>
+          <span style="font-size: 0.8125rem; color: var(--text-secondary);">${project.architectureDetails.realtime}</span>
+        </div>` : ''}
+        ${project.architectureDetails.notifications ? `
+        <div style="background: var(--bg-main); padding: 0.875rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <strong style="color: var(--text-primary); font-size: 0.8125rem; display: block; margin-bottom: 0.25rem;">Notifications</strong>
+          <span style="font-size: 0.8125rem; color: var(--text-secondary);">${project.architectureDetails.notifications}</span>
         </div>` : ''}
       </div>
     </div>

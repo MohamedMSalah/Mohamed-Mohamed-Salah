@@ -117,7 +117,7 @@ def create_pdf(output_path):
 
     # Summary
     add_section_header("Summary")
-    story.append(Paragraph("Innovative Full Stack Developer with 1+ year of experience specializing in cross-platform mobile and scalable web applications. Developed and deployed iOS and Android applications, enhancing functionality and reliability through state-of-the-art practices, such as integrating diverse APIs and configuring CI/CD pipelines.", body_text))
+    story.append(Paragraph("Full Stack Mobile Developer and Software Engineer with 1+ year of hands-on experience building cross-platform applications and dependable backend systems. Proficient in Flutter, Dart, Provider, Node.js, TypeScript, Express, Prisma, ASP.NET Core, C#, PostgreSQL, SQL Server, and Firebase.", body_text))
 
     # Education
     add_section_header("Education")
@@ -142,7 +142,7 @@ def create_pdf(output_path):
     add_section_header("Experience")
     exp_table = Table([
         [
-            Paragraph("<b>Full Stack Mobile Developer</b>, Lev AI (formerly Diven-AI) — Part-time", body_bold),
+            Paragraph("<b>Full Stack Mobile Developer</b>, Lev AI (rebranded from Diven-AI) — Part-time", body_bold),
             Paragraph("07/2026 – Present", body_meta)
         ]
     ], colWidths=[380, 160])
@@ -154,8 +154,8 @@ def create_pdf(output_path):
         ('RIGHTPADDING', (0,0), (-1,-1), 0)
     ]))
     story.append(exp_table)
-    story.append(Paragraph("• Developed cross-platform mobile applications with Flutter and Dart, and expanded into React Native, Node.js, and PostgreSQL projects.", bullet_style))
-    story.append(Paragraph("• Built RESTful APIs, worked with SQL and PostgreSQL, integrated Firebase, and applied Clean Architecture, Provider, Repository Pattern, and SOLID principles while supporting interns and junior developers.", bullet_style))
+    story.append(Paragraph("• Developed cross-platform mobile applications with Flutter and Dart, alongside Node.js, TypeScript, and PostgreSQL backend services.", bullet_style))
+    story.append(Paragraph("• Built RESTful APIs, worked with SQL and PostgreSQL databases, integrated Firebase, and applied Clean Architecture, Provider, Repository Pattern, and SOLID principles while supporting interns and junior developers.", bullet_style))
 
     story.append(Spacer(1, 4))
     exp_table_service = Table([
@@ -172,12 +172,12 @@ def create_pdf(output_path):
         ('RIGHTPADDING', (0,0), (-1,-1), 0)
     ]))
     story.append(exp_table_service)
-    story.append(Paragraph("• Completed military service.", bullet_style))
+    story.append(Paragraph("• Completed mandatory military service.", bullet_style))
 
     story.append(Spacer(1, 4))
     exp_table_2 = Table([
         [
-            Paragraph("<b>Full-Stack Mobile Developer</b>, Diven-AI", body_bold),
+            Paragraph("<b>Full-Stack Mobile Developer</b>, Diven-AI (now Lev AI)", body_bold),
             Paragraph("07/2024 – 07/2025", body_meta)
         ]
     ], colWidths=[380, 160])
@@ -190,11 +190,11 @@ def create_pdf(output_path):
     ]))
     story.append(exp_table_2)
     story.append(Paragraph("• Built full-stack mobile products with Flutter, developed .NET backend APIs, and integrated databases for reliable end-to-end application experiences.", bullet_style))
-    story.append(Paragraph("• Architected and deployed cross-platform iOS & Android healthcare applications using Flutter, Dart, and BLoC/Riverpod, cutting multi-platform development time by 40% while maintaining a 99.8% crash-free session rate and consistent 60 FPS UI performance.", bullet_style))
-    story.append(Paragraph("• Engineered high-performance backend services using ASP.NET Core (C#) and designed a normalized SQL Server database with 15+ related tables (Patients, Appointments, EHR), optimizing EF Core queries to reduce average API response latency by 35%.", bullet_style))
-    story.append(Paragraph("• Implemented enterprise-grade security via OAuth 2.0, JWT, and fine-grained Role-Based Access Control (RBAC) across 3 user tiers (Patients, Doctors, Admins), securing 100% of sensitive medical records and clinical endpoints against unauthorized access.", bullet_style))
-    story.append(Paragraph("• Integrated third-party APIs and SDKs (Stripe, Google Maps, Firebase Cloud Messaging), automating 100% of online billing and booking lifecycles while validating 40+ API endpoints via Postman with zero critical integration errors.", bullet_style))
-    story.append(Paragraph("• Streamlined QA and deployment workflows by setting up automated CI/CD pipelines and writing unit/mock tests using Flutter Test and Mockito, boosting test coverage to 80%+ and cutting pre-release regression testing time by 50%.", bullet_style))
+    story.append(Paragraph("• Developed cross-platform mobile applications using Flutter, Dart, and Provider/BLoC state management, ensuring smooth 60 FPS UI performance.", bullet_style))
+    story.append(Paragraph("• Engineered backend services using ASP.NET Core (C#) and designed a normalized SQL Server database with 15+ related tables (Patients, Appointments, EHR), utilizing Entity Framework Core.", bullet_style))
+    story.append(Paragraph("• Implemented enterprise-grade security via OAuth 2.0, JWT, and Role-Based Access Control (RBAC) across 3 user tiers (Patients, Doctors, Admins), securing sensitive clinical endpoints against unauthorized access.", bullet_style))
+    story.append(Paragraph("• Integrated third-party APIs and SDKs (Google Maps, Firebase Cloud Messaging), automating booking lifecycles and validating RESTful endpoints via Postman.", bullet_style))
+    story.append(Paragraph("• Supported interns and junior developers in Flutter, SQL, and backend concepts, reinforcing Clean Architecture and SOLID principles.", bullet_style))
 
     # Projects
     add_section_header("Projects")
@@ -233,20 +233,25 @@ def create_pdf(output_path):
     # Project 4: Yalla 5roga
     story.append(Spacer(1, 2))
     p4_table = Table([
-        [Paragraph("<b>Yalla 5roga (Social Outing Planner)</b> — Flutter, Node.js, PostgreSQL", body_bold), Paragraph("In Development", body_meta)]
+        [Paragraph("<b>Yalla 5roga (Social Outing Planner)</b> — Flutter, Node.js, TypeScript, PostgreSQL", body_bold), Paragraph("In Development", body_meta)]
     ], colWidths=[380, 160])
     p4_table.setStyle(TableStyle([('VALIGN', (0,0), (-1,-1), 'TOP'), ('BOTTOMPADDING', (0,0), (-1,-1), 0), ('TOPPADDING', (0,0), (-1,-1), 0), ('LEFTPADDING', (0,0), (-1,-1), 0), ('RIGHTPADDING', (0,0), (-1,-1), 0)]))
     story.append(p4_table)
-    story.append(Paragraph("• Cross-platform outing planner replacing disorganized group chats with structured venue suggestion, voting, RSVP tracking, and Google Maps routing.", bullet_style))
+    story.append(Paragraph("• Independently developed an end-to-end social outing platform using Flutter, Node.js, TypeScript, Express, Prisma, PostgreSQL, Firebase, Socket.IO, and MapLibre GL.", bullet_style))
+    story.append(Paragraph("• Engineered group management, outing planning, multi-place voting, real-time chat, invitation links, and interactive map exploration.", bullet_style))
 
     # Skills
     add_section_header("Skills & Competencies")
-    story.append(Paragraph("• <b>Programming Languages:</b> Dart, JavaScript, TypeScript, Java, C#, C++, SQL", bullet_style))
-    story.append(Paragraph("• <b>Mobile & Frontend:</b> Flutter, Provider, Riverpod, BLoC, React Native, Responsive UI Design", bullet_style))
-    story.append(Paragraph("• <b>Backend & APIs:</b> ASP.NET Core, RESTful APIs, GraphQL, Microservices, Node.js, Clean Architecture", bullet_style))
-    story.append(Paragraph("• <b>Databases:</b> SQL Server, PostgreSQL, SQLite, Firebase, Entity Framework Core", bullet_style))
-    story.append(Paragraph("• <b>DevOps & Cloud:</b> Azure, AWS, Docker, CI/CD Pipelines, Git, GitHub Actions, Flutter Test & Mockito", bullet_style))
-    story.append(Paragraph("• <b>Security:</b> JWT, OAuth 2.0, Identity Server, Role-Based Access Control (RBAC)", bullet_style))
+    story.append(Paragraph("• <b>Programming Languages:</b> Dart, TypeScript, JavaScript, C#, SQL, C++", bullet_style))
+    story.append(Paragraph("• <b>Mobile & Frontend:</b> Flutter, Provider, BLoC, Riverpod, Responsive UI Design", bullet_style))
+    story.append(Paragraph("• <b>Backend & APIs:</b> Node.js, TypeScript, Express, ASP.NET Core, C#, RESTful APIs, Socket.IO, Clean Architecture", bullet_style))
+    story.append(Paragraph("• <b>Databases & ORM:</b> PostgreSQL, SQL Server, Prisma, Entity Framework Core, Firebase, SQL", bullet_style))
+    story.append(Paragraph("• <b>Security & Real-Time:</b> Socket.IO, Firebase Cloud Messaging, JWT, OAuth 2.0, Role-Based Access Control (RBAC)", bullet_style))
+    story.append(Paragraph("• <b>Tools & Practices:</b> Git, GitHub, Postman, MapLibre GL, SOLID Principles, Flutter Test & Mockito", bullet_style))
+
+    # Languages
+    add_section_header("Languages")
+    story.append(Paragraph("• <b>English:</b> Upper-Intermediate &nbsp;&nbsp;|&nbsp;&nbsp; • <b>Arabic:</b> Native", bullet_style))
 
     # Languages
     add_section_header("Languages")

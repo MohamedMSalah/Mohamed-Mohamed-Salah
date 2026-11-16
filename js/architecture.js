@@ -8,7 +8,7 @@ const archNodes = [
     id: "mobile",
     step: "01",
     title: "Mobile Client",
-    tech: "Flutter / Dart / React Native",
+    tech: "Flutter / Dart",
     summary: "Responsive, 60 FPS multi-platform UI with clean separation between views and state.",
     details: "I construct declarative UI trees following Clean Architecture. Components are strictly decoupled from business logic, ensuring rapid theming, predictable lifecycle behavior, and high frame rates (60 FPS).",
     practices: ["Widget tree decomposition & modular UI widgets", "Strict separation of presentation & domain logic", "Responsive layout constraints for mobile, tablet, and desktop"]
@@ -17,16 +17,16 @@ const archNodes = [
     id: "state",
     step: "02",
     title: "State Management",
-    tech: "BLoC / Riverpod / Provider",
+    tech: "Provider / BLoC / Riverpod",
     summary: "Predictable unidirectional data flow and robust asynchronous event handling.",
-    details: "State changes are driven by explicit events or immutable states. Using BLoC/Riverpod eliminates unexpected side effects, facilitates unit testing, and provides granular widget rebuilding.",
+    details: "State changes are driven by explicit events or immutable states. Using Provider or BLoC eliminates unexpected side effects, facilitates unit testing, and provides granular widget rebuilding.",
     practices: ["Unidirectional data flow (Event -> State)", "Zero business logic inside UI build methods", "Strict immutable state representations"]
   },
   {
     id: "repo",
     step: "03",
     title: "Repository / API Layer",
-    tech: "Dio / HTTP / Clean Arch",
+    tech: "REST APIs / HTTP / Clean Arch",
     summary: "Abstract data contracts and network serialization isolating the UI from network complexities.",
     details: "The repository layer exposes Dart contracts/interfaces. It handles JSON serialization, custom interceptors for JWT token injection, automated token refresh, caching, and graceful offline degradation.",
     practices: ["Repository Pattern with abstract domain contracts", "Custom HTTP interceptors for automatic JWT renewal", "Safe JSON deserialization & network error mapping"]
@@ -35,7 +35,7 @@ const archNodes = [
     id: "gateway",
     step: "04",
     title: "REST APIs & Gateway",
-    tech: "ASP.NET Core / Node.js",
+    tech: "Node.js / Express / ASP.NET Core",
     summary: "Secure, documented, and versioned RESTful endpoints with input validation.",
     details: "APIs are built with strict input validation, Swagger/OpenAPI documentation, rate limiting, and standard HTTP response envelopes. Designed to minimize payload size and latency.",
     practices: ["FluentValidation / Model validation middleware", "Swagger / OpenAPI contract generation", "Consistent error response shapes & HTTP status codes"]
@@ -44,19 +44,19 @@ const archNodes = [
     id: "backend",
     step: "05",
     title: "Backend Services",
-    tech: "C# / ASP.NET / Node.js",
-    summary: "Domain-driven business logic, SOLID principles, and dependency injection.",
-    details: "Backend services contain the core business rules. Architected with Dependency Injection and Service Layers to ensure zero coupling to specific transport or database implementations.",
+    tech: "C# / ASP.NET / Node.js / Socket.IO",
+    summary: "Domain-driven business logic, SOLID principles, and real-time events.",
+    details: "Backend services contain the core business rules. Architected with Dependency Injection and Service Layers to ensure modularity, maintainability, and clean separation of concerns.",
     practices: ["Dependency Injection (DI) & SOLID principles", "Domain-Driven Service Layer architecture", "Asynchronous async/await throughout all I/O paths"]
   },
   {
     id: "database",
     step: "06",
     title: "Database & Storage",
-    tech: "SQL Server / PostgreSQL",
+    tech: "PostgreSQL / SQL Server / Prisma",
     summary: "Normalized relational schemas, indexed queries, and transactional integrity.",
-    details: "Relational modeling with foreign key constraints, normalized tables (15+ tables for complex domain models), EF Core query optimization (preventing N+1 queries), and migration history tracking.",
-    practices: ["3NF relational schema design with proper indexing", "Optimized EF Core queries & raw SQL where needed", "Automated code-first migrations and seed routines"]
+    details: "Relational modeling with foreign key constraints, normalized tables (15+ tables for complex domain models), Prisma & EF Core migrations, and query optimization.",
+    practices: ["3NF relational schema design with proper indexing", "Optimized queries & Prisma/EF Core models", "Automated code-first migrations and seed routines"]
   }
 ];
 
@@ -122,4 +122,8 @@ function initArchitecture() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initArchitecture);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initArchitecture);
+} else {
+  initArchitecture();
+}
