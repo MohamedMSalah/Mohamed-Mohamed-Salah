@@ -10,7 +10,7 @@ const projectsData = [
     title: "Clinic Management System (CMS)",
     category: "fullstack",
     company: "DivenAI",
-    duration: "April 2025 – June 2025",
+    duration: "May 2025 – Jul 2025",
     badge: "Production / Enterprise",
     badgeType: "primary",
     summary: "An end-to-end healthcare platform connecting Patients, Doctors, and Administrators with full appointment scheduling, diagnosis tracking, and medical record management.",
@@ -19,7 +19,7 @@ const projectsData = [
       { label: "Database Schema", value: "15+ Tables" },
       { label: "REST Endpoints", value: "10+ Endpoints" },
       { label: "Role Workflows", value: "3 User Roles" },
-      { label: "API Validation", value: "100% Postman" }
+      { label: "API Validation", value: "100% Swagger" }
     ],
     highlights: [
       "Designed the complete relational database architecture from scratch with 15+ normalized SQL tables.",
@@ -44,24 +44,22 @@ const projectsData = [
     image: "assets/projects/alarmus.webp",
     title: "Alarmus — Collaborative Alarms",
     category: "mobile",
-    company: "Lev AI / DivenAI",
-    duration: "January 2025 – February 2025",
+    company: "DivenAI",
+    duration: "Jan 2025 – Feb 2025",
     badge: "Real-time / Utility",
     badgeType: "primary",
     summary: "Real-time notification-based collaborative alarm application allowing groups to coordinate schedules and wake-up alerts simultaneously.",
     technologies: ["Flutter", ".NET", "REST APIs", "Swagger", "Firebase Cloud Messaging", "Push Notifications"],
     metrics: [
+      { label: "Coordination Gain", value: "40% Boost" },
       { label: "Group Testing", value: "10+ Members" },
       { label: "Swagger APIs", value: "10+ Endpoints" },
-      { label: "Coordination", value: "Real-time Sync" },
       { label: "Client Stack", value: "Flutter Mobile" }
     ],
     highlights: [
-      "Developed a real-time notification-based alarm system to synchronize alerts across multiple devices seamlessly.",
-      "Implemented intuitive group creation and member management workflows.",
-      "Enabled group owners and moderators to trigger simultaneous alarms and urgent notifications across all active devices.",
-      "Successfully stress-tested with synchronized groups of 10+ concurrent members, dramatically reducing manual phone/chat coordination.",
-      "Integrated Flutter mobile frontend with .NET backend using 10+ Swagger-documented RESTful endpoints."
+      "Built a real-time, notification-based alarm app supporting group creation and member management, reducing missed coordination events by 40%.",
+      "Enabled group owners/moderators to trigger simultaneous notifications across all group members (tested with groups of up to 10+), cutting manual coordination time.",
+      "Integrated Flutter frontend with a .NET backend via 10+ Swagger-documented endpoints for streamlined communication."
     ],
     architectureDetails: {
       frontend: "Flutter cross-platform application with custom alarm background services and push listeners",
@@ -79,7 +77,7 @@ const projectsData = [
     title: "Manetho — Hieroglyphic Translation",
     category: "ai",
     company: "Graduation Project",
-    duration: "April 2024 – June 2024",
+    duration: "May 2024 – Jun 2024",
     badge: "Graduation Project • A+",
     badgeType: "success",
     summary: "My graduation project, awarded an A+ degree. An intelligent Flutter mobile application leveraging dual AI models (Computer Vision + NLP) to detect, segment, and translate ancient Egyptian hieroglyphic symbols into modern text.",
@@ -87,16 +85,14 @@ const projectsData = [
     metrics: [
       { label: "Model Accuracy", value: "80% Accuracy" },
       { label: "Avg Latency", value: "< 10 Seconds" },
-      { label: "Researcher Testing", value: "20+ Users" },
+      { label: "Graduation Award", value: "2nd Place" },
       { label: "AI Models", value: "2 Pipelines" }
     ],
     highlights: [
-      "Completed as my graduation project and awarded an A+ degree.",
-      "Built an intuitive cross-platform Flutter application tailored for tourists, Egyptologists, and researchers.",
-      "Engineered dual AI pipeline: one Computer Vision model for hieroglyph symbol detection and segmentation, and an NLP model for linguistic translation.",
+      "Awarded 2nd Place Overall in a university-wide graduation project evaluation conducted under ITI supervision across Computer Science and Engineering faculties.",
+      "Developed an AI-powered mobile app that translates ancient Egyptian hieroglyphs into readable text by integrating computer vision and NLP models.",
       "Achieved 80% recognition accuracy on benchmark symbol datasets and real-world artifact images.",
-      "Optimized API inference orchestration to achieve sub-10-second average end-to-end response times.",
-      "Conducted extensive user acceptance testing with 20+ researchers and students for field validation."
+      "Optimized API inference orchestration to deliver responses in under 10 seconds average end-to-end response time."
     ],
     architectureDetails: {
       frontend: "Flutter camera capture interface with real-time bounding box overlays and translation history",

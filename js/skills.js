@@ -5,7 +5,7 @@
 
 const skillsData = [
   {
-    category: "Mobile Development",
+    category: "Frontend & Mobile",
     icon: "smartphone",
     description: "Cross-platform mobile apps with responsive UI and robust state management.",
     skills: [
@@ -14,22 +14,26 @@ const skillsData = [
       { name: "Provider", highlight: true },
       { name: "BLoC", highlight: true },
       { name: "Riverpod", highlight: true },
+      { name: "React", highlight: false },
+      { name: "React Native", highlight: false },
       { name: "Responsive UI", highlight: false }
     ]
   },
   {
-    category: "Backend & APIs",
+    category: "Design Backend & APIs",
     icon: "server",
     description: "Robust backend services, real-time communication, and RESTful APIs.",
     skills: [
-      { name: "Node.js", highlight: true },
-      { name: "Express", highlight: true },
-      { name: "TypeScript", highlight: true },
       { name: "ASP.NET Core", highlight: true },
       { name: "C#", highlight: true },
-      { name: "REST APIs", highlight: true },
+      { name: "Node.js", highlight: true },
+      { name: "TypeScript", highlight: true },
+      { name: "Express", highlight: true },
+      { name: "RESTful APIs", highlight: true },
       { name: "Socket.IO", highlight: true },
       { name: "Clean Architecture", highlight: true },
+      { name: "GraphQL", highlight: false },
+      { name: "Microservices", highlight: false },
       { name: "Swagger / OpenAPI", highlight: false }
     ]
   },
@@ -43,6 +47,7 @@ const skillsData = [
       { name: "Prisma", highlight: true },
       { name: "Entity Framework Core", highlight: true },
       { name: "Firebase", highlight: true },
+      { name: "MySQL", highlight: false },
       { name: "SQL", highlight: false }
     ]
   },
@@ -56,32 +61,36 @@ const skillsData = [
       { name: "JavaScript", highlight: true },
       { name: "C#", highlight: true },
       { name: "SQL", highlight: true },
+      { name: "Java", highlight: false },
       { name: "C++", highlight: false }
     ]
   },
   {
-    category: "Security & Real-Time",
+    category: "Security & Authentication",
     icon: "shield",
     description: "Authentication standards, role-based authorization, and real-time event systems.",
     skills: [
-      { name: "Socket.IO", highlight: true },
-      { name: "Firebase Cloud Messaging", highlight: true },
       { name: "JWT", highlight: true },
       { name: "OAuth 2.0", highlight: true },
       { name: "RBAC (Role-Based Access)", highlight: true },
-      { name: "Secure Storage", highlight: false }
+      { name: "Identity Server", highlight: false },
+      { name: "Socket.IO", highlight: true },
+      { name: "Firebase Cloud Messaging", highlight: true }
     ]
   },
   {
-    category: "Tools & Practices",
+    category: "DevOps & Tools",
     icon: "cloud",
     description: "Version control, API testing, spatial mapping, and software architecture.",
     skills: [
       { name: "Git", highlight: true },
       { name: "GitHub", highlight: true },
+      { name: "CI/CD", highlight: true },
+      { name: "Docker", highlight: false },
+      { name: "Azure", highlight: false },
+      { name: "AWS", highlight: false },
       { name: "Postman", highlight: true },
       { name: "MapLibre GL", highlight: true },
-      { name: "SOLID Principles", highlight: true },
       { name: "Flutter Test & Mockito", highlight: false }
     ]
   }
